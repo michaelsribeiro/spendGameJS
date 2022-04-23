@@ -1,0 +1,41 @@
+@import "../abstract/variables";
+
+.btn-default {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    color: $white;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;    
+    outline: none;
+    background-color: $black;
+    transition: all .3s ease;
+
+    @include breakpoint(large-up) {
+        font-size: 10px;
+    }
+
+    &:hover {
+        background-color: darken($black, 10%);
+    }
+}
+
+.topbtn {
+    display: none;
+    width: 50px;
+    height: 50px;
+    background-color: $black;
+    border: none;
+    outline: none;
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    border-radius: 50%;
+    z-index: z-index(modal);
+
+    i {
+        font-size: 30px;
+        color: $white;
+    }
+}

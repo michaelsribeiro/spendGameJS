@@ -1,0 +1,33 @@
+@import "../abstract/variables";
+
+h1 {
+    font-size: .5rem;
+    font-weight: 700;
+    color: $gray;
+}
+
+h2 {    
+    text-transform: uppercase;
+    font-size: $global-font-size;
+    font-weight: 600;
+    color: $gray;    
+}
+
+h3 {    
+    font-size: 13px;
+    font-weight: 600;
+    color: $gray;
+}
+
+h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: $gray;
+}
+
+p {
+    text-align: justify;
+    font-size: 1.2rem !important;
+    line-height: 1.7;
+    color: #242424;
+}

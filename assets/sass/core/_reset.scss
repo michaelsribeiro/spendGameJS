@@ -1,0 +1,51 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-size: $global-font-size;
+    font-family: "Roboto", sans-serif !important;
+}
+
+html {
+    box-sizing: border-box;    
+    overflow-x: hidden;   
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+button,
+[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+}
+
+p {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding: 0;
+    margin: 0;
+} 
+
+a,
+a:visited {
+    text-decoration: none;
+    color: #1abc9c;
+}
+
+a:hover {
+    color: #2ecc71 !important;
+}

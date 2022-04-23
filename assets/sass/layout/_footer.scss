@@ -1,0 +1,13 @@
+@import "../core/reset";
+@import "../abstract/breakpoint";
+@import "../abstract/variables";
+@import "../abstract/mixins";
+
+footer {
+    margin-top: 15px;
+
+    p {
+        margin-bottom: 0;
+        font-size: .8rem !important;
+    }
+}

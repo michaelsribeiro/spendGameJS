@@ -1,0 +1,32 @@
+@import "../core/reset";
+@import "../abstract/breakpoint";
+@import "../abstract/variables";
+@import "../abstract/mixins";
+
+.money {
+    background: linear-gradient(180deg,#2ecc71,#1abc9c);
+
+    p {
+        font-size: 1.8rem !important;
+        font-weight: 700;
+    }
+
+}
+
+.fixedTop {
+    position: fixed;
+    margin-top: 0;
+}
+
+.receipt {
+    position: sticky !important;
+
+    p {
+        margin-bottom: 0;
+        font-size: 1rem !important;
+    }
+
+    .total {
+        border-top: 1px solid $gray;
+    }
+}
