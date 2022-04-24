@@ -54,16 +54,30 @@ function updateCart(productItem) {
     if(cart.length > 0){
         document.querySelector('.receipt').classList.remove('d-none');
         document.querySelector('.receipt').classList.add('d-flex');
-        productItem.querySelector('.btn.btn-danger').classList.remove('disabled');
+        document.querySelector('.receipt .items').innerHTML = '';
+        productItem.querySelector('.product--remove').classList.remove('disabled');
         let total = 72000000000.00;
         for(let i in cart) {
             let itemCart = products.find((item) => item.id == cart[i].id);
             let showCartItem = document.querySelector('.model .cart').cloneNode(true);
             total -= itemCart.price * cart[i].qtCart;
-            productItem.querySelector('.product--qtd').value = cart[i].qtCart; 
-            document.querySelector('.value').innerHTML = `${total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;   
+            productItem.querySelector('.product--qtd').value = cart[i].qtCart;  
             showCartItem.querySelector('.cart-item').innerHTML = itemCart.name;
             showCartItem.querySelector('.cart-item-value').innerHTML = `${itemCart.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;
+            document.querySelector('.value').innerHTML = `${total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;  
+
+            productItem.querySelector('.product--remove').addEventListener('click', () => {
+                if(cart[i].qtCart > 1){
+                    cart[i].qtCart -= 1;                     
+                } else {
+                    console.log(cart);
+                    cart.splice(i, 1);
+                    productItem.querySelector('.product--remove').classList.add('disabled');
+                    updateCart();
+                }
+                updateCart();
+            });
+
             document.querySelector('.receipt .items').append(showCartItem);
         }
     } else {
