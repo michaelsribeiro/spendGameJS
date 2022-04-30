@@ -1,4 +1,4 @@
-let moneyAmount = document.querySelector('.money');
+let moneyAmount = document.querySelector('.totalMoney');
 
 currStickyPos = moneyAmount.getBoundingClientRect().top + window.scrollY;
 window.onscroll = () => {
@@ -9,79 +9,80 @@ window.onscroll = () => {
     }
 }
 
-let cart = [];
+// Default data
 let productKey = 0;
+let quant = 0;
+let jorgeFortune = 72000000000;
+let cartElements = new Array(0);
 
-products.map((item, index) => {
+// Elements
+const productContainer = document.querySelector('.product-container .row');
+let totalMoneyElement = document.querySelector('#totalMoney');
+updateTotal();
+
+products.forEach((item, index) => {
     const productItem = document.querySelector('.model .product-card').cloneNode(true);
-    let total = 72000000000.00;
-    
-    document.querySelector('.value').innerHTML = `${total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;
+
     productItem.setAttribute('data-key', index);
     productItem.querySelector('.product--img img').src = item.img;
     productItem.querySelector('.product--name').innerHTML = item.name;
     productItem.querySelector('.product--price').innerHTML = `${item.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;
     productItem.querySelector('.product--qtd').value = 0;
-    addToCart(productItem);
+    
+    // Events
+    productItem.addEventListener('click', (e) => {
+        let element = e.target.parentElement.parentElement;
 
-    document.querySelector('.products .row').append(productItem);
+        if (e.target.classList.contains('product--add')) {
+            buyItem(element, e);
+        } else if (e.target.classList.contains('product--remove')) {
+            sellItem(element, e);
+        }
+    });
+
+    productContainer.appendChild(productItem);  
 });
 
-function addToCart(productItem) {
-    productItem.querySelector('.product--add').addEventListener("click", (event) => {
-        let key = event.target.closest('.product-card').getAttribute('data-key');
-        let quant = 1;
-        productKey = key;
 
-        let identifier = products[productKey].id;
-        key = cart.findIndex((item) => item.identifier == identifier);
+// Buy Item Function
+function buyItem(element, e) {
+    quant = 1;
 
-        if(key > -1) {
-            cart[key].qtCart += quant;
-        } else {
-            cart.push({
-                identifier,
-                id: products[productKey].id,
-                qtCart: quant,
-                price: products[productKey].price,
-            });          
-        }      
-        updateCart(productItem);    
-    });
+    // Get the product key
+    let key = e.target.closest('.product-card').getAttribute('data-key');
+    productKey = key;
+
+    // 
+    let identifier = products[productKey].id;
+    key = cartElements.findIndex((item) => item.identifier == identifier); 
+
+    if(key > -1 && jorgeFortune > cartElements[key].price) {
+        cartElements[key].qtCart ++;        
+    } 
+
+    if(cartElements[key] === undefined && jorgeFortune >= products[productKey].price){
+        cartElements.push({
+            identifier,
+            id: products[productKey].id,
+            qtCart: quant,
+            price: products[productKey].price,
+        });      
+    } 
+
+    for (let i in cartElements) {
+
+        cartElements[i].price > jorgeFortune ? e.target.classList.add('disabled') : e.target.classList.remove('disabled');
+    
+        if (jorgeFortune - cartElements[i].price > 0 && jorgeFortune >= cartElements[i].price)
+            jorgeFortune -= cartElements[i].price;
+
+        if(cartElements[i].qtCart > 0)
+            element.querySelector('.product--qtd').value = cartElements[i].qtCart;
+            element.querySelector('.product--remove').classList.remove('disabled'); 
+    }
+    updateTotal();     
 }
 
-function updateCart(productItem) {
-    if(cart.length > 0){
-        document.querySelector('.receipt').classList.remove('d-none');
-        document.querySelector('.receipt').classList.add('d-flex');
-        document.querySelector('.receipt .items').innerHTML = '';
-        productItem.querySelector('.product--remove').classList.remove('disabled');
-        let total = 72000000000.00;
-        for(let i in cart) {
-            let itemCart = products.find((item) => item.id == cart[i].id);
-            let showCartItem = document.querySelector('.model .cart').cloneNode(true);
-            total -= itemCart.price * cart[i].qtCart;
-            productItem.querySelector('.product--qtd').value = cart[i].qtCart;  
-            showCartItem.querySelector('.cart-item').innerHTML = itemCart.name;
-            showCartItem.querySelector('.cart-item-value').innerHTML = `${itemCart.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;
-            document.querySelector('.value').innerHTML = `${total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;  
-
-            productItem.querySelector('.product--remove').addEventListener('click', () => {
-                if(cart[i].qtCart > 1){
-                    cart[i].qtCart -= 1;                     
-                } else {
-                    console.log(cart);
-                    cart.splice(i, 1);
-                    productItem.querySelector('.product--remove').classList.add('disabled');
-                    updateCart();
-                }
-                updateCart();
-            });
-
-            document.querySelector('.receipt .items').append(showCartItem);
-        }
-    } else {
-        document.querySelector('.receipt').classList.remove('d-flex');
-        document.querySelector('.receipt').classList.add('d-none');
-    }
+function updateTotal() {
+    totalMoneyElement.innerHTML = `${jorgeFortune.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;
 }

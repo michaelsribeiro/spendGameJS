@@ -3,7 +3,7 @@ const products = [
     {id:2, name:'Par de Havaianas', img:'assets/images/products/havaianas.webp', price:39.00},
     {id:3, name:'Pack de Coca-Cola', img:'assets/images/products/coca-cola.webp', price:43.00},
     {id:4, name:'Ingresso de Cinema', img:'assets/images/products/ingresso.webp', price:49.00},
-    {id:5, name:'Livro', img:'assets/images/products/livro.webp', price:'69.00'},
+    {id:5, name:'Livro', img:'assets/images/products/livro.webp', price:69.00},
     {id:6, name:'Jantar no Outback', img:'assets/images/products/outback.webp', price:89.00},
     {id:7, name:'Jogo de Videogame', img:'assets/images/products/game.webp', price:250.00},
     {id:8, name:'Alexa', img:'assets/images/products/alexa.webp', price:370.00},
