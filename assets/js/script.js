@@ -52,7 +52,7 @@ function buyItem(element, e) {
     let key = e.target.closest('.product-card').getAttribute('data-key');
     productKey = key;
 
-    let identifier = products[productKey].id;
+    let identifier = products[productKey].id + '-';
     key = cartElements.findIndex((item) => item.identifier == identifier); 
 
     if(key > -1 && jorgeFortune > cartElements[key].price) {
@@ -90,25 +90,27 @@ function sellItem(element, e) {
     let key = e.target.closest('.product-card').getAttribute('data-key');
     productKey = key;
 
-    let identifier = products[productKey].id;
-    key = cartElements.findIndex((item) => item.identifier == identifier); 
+    let identifier = products[productKey].id + '-';
+    key = cartElements.findIndex((item) => item.identifier == identifier);     
     
+    jorgeFortune += cartElements[key].price;
+
     let sellBtn = element.querySelector('.product--remove');
     let qtd = element.querySelector('.product--qtd');
-    for (let i in cartElements) {
+    for (let i in cartElements) {        
+
 
         cartElements[i].price > jorgeFortune ? e.target.disabled = true : e.target.disabled = false;
     
         if (cartElements[i].qtCart > 1){
-            cartElements[i].qtCart -= 1;
-            jorgeFortune += cartElements[i].price;
+            cartElements[i].qtCart --;
             qtd.value = cartElements[i].qtCart;
         } else {
             cartElements.splice(i, 1);
             sellBtn.classList.add('disabled');
-            qtd.value = 0;
-            jorgeFortune += cartElements[i].price;        
-        }
+            qtd.value = 0;       
+        } 
+     
 
         updateTotal();              
     }
