@@ -40,11 +40,11 @@ products.forEach((item, index) => {
         }
     });
 
-    productContainer.appendChild(productItem);  
+    productContainer.appendChild(productItem); 
+    
+    disableButton();
 });
 
-
-// Buy Item Function
 function buyItem(element, e) {
     quant = 1;
 
@@ -52,7 +52,6 @@ function buyItem(element, e) {
     let key = e.target.closest('.product-card').getAttribute('data-key');
     productKey = key;
 
-    // 
     let identifier = products[productKey].id;
     key = cartElements.findIndex((item) => item.identifier == identifier); 
 
@@ -68,10 +67,10 @@ function buyItem(element, e) {
             price: products[productKey].price,
         });      
     } 
-
+    
     for (let i in cartElements) {
 
-        cartElements[i].price > jorgeFortune ? e.target.classList.add('disabled') : e.target.classList.remove('disabled');
+        cartElements[i].price > jorgeFortune ? e.target.disabled = true : e.target.disabled = false;
     
         if (jorgeFortune - cartElements[i].price > 0 && jorgeFortune >= cartElements[i].price)
             jorgeFortune -= cartElements[i].price;
@@ -80,9 +79,55 @@ function buyItem(element, e) {
             element.querySelector('.product--qtd').value = cartElements[i].qtCart;
             element.querySelector('.product--remove').classList.remove('disabled'); 
     }
-    updateTotal();     
+
+    updateTotal(); 
+    disableButton();    
+}
+
+function sellItem(element, e) {
+
+    // Get the product key
+    let key = e.target.closest('.product-card').getAttribute('data-key');
+    productKey = key;
+
+    let identifier = products[productKey].id;
+    key = cartElements.findIndex((item) => item.identifier == identifier); 
+    
+    let sellBtn = element.querySelector('.product--remove');
+    let qtd = element.querySelector('.product--qtd');
+    for (let i in cartElements) {
+
+        cartElements[i].price > jorgeFortune ? e.target.disabled = true : e.target.disabled = false;
+    
+        if (cartElements[i].qtCart > 1){
+            cartElements[i].qtCart -= 1;
+            jorgeFortune += cartElements[i].price;
+            qtd.value = cartElements[i].qtCart;
+        } else {
+            cartElements.splice(i, 1);
+            sellBtn.classList.add('disabled');
+            qtd.value = 0;
+            jorgeFortune += cartElements[i].price;        
+        }
+
+        updateTotal();              
+    }
+
+    updateTotal(); 
+    disableButton();
 }
 
 function updateTotal() {
     totalMoneyElement.innerHTML = `${jorgeFortune.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;
+}
+
+function disableButton() {
+    let cards = document.querySelectorAll('.product-card');
+    cards.forEach((item) => {
+        let priceItem = parseInt(item.querySelector('.product--price').textContent.replace(/[R$ .]/g,''));
+        
+        let buyBtn = item.querySelector('.product--add');
+
+        priceItem > jorgeFortune ? buyBtn.disabled = true : buyBtn.disabled = false;
+    });
 }
