@@ -67,8 +67,12 @@ function buyItem(element, e) {
             price: products[productKey].price,
         });      
     } 
+
+
     
     for (let i in cartElements) {
+
+        console.log(cartElements[i].id)
 
         cartElements[i].price > jorgeFortune ? e.target.disabled = true : e.target.disabled = false;
     
@@ -78,6 +82,7 @@ function buyItem(element, e) {
         if(cartElements[i].qtCart > 0)
             element.querySelector('.product--qtd').value = cartElements[i].qtCart;
             element.querySelector('.product--remove').classList.remove('disabled'); 
+            updateTotal(); 
     }
 
     updateTotal(); 
@@ -85,37 +90,26 @@ function buyItem(element, e) {
 }
 
 function sellItem(element, e) {
-
-    // Get the product key
-    let key = e.target.closest('.product-card').getAttribute('data-key');
-    productKey = key;
-
-    let identifier = products[productKey].id + '-';
-    key = cartElements.findIndex((item) => item.identifier == identifier);     
-    
-    jorgeFortune += cartElements[key].price;
-
     let sellBtn = element.querySelector('.product--remove');
     let qtd = element.querySelector('.product--qtd');
-    for (let i in cartElements) {        
+    let key = e.target.closest('.product-card').getAttribute('data-key');
 
+    for(let i in cartElements){       
 
-        cartElements[i].price > jorgeFortune ? e.target.disabled = true : e.target.disabled = false;
-    
-        if (cartElements[i].qtCart > 1){
-            cartElements[i].qtCart --;
+        if (cartElements[i].id === products[key].id) {
+            cartElements[i].qtCart -= 1;
             qtd.value = cartElements[i].qtCart;
-        } else {
-            cartElements.splice(i, 1);
-            sellBtn.classList.add('disabled');
-            qtd.value = 0;       
-        } 
-     
+            jorgeFortune += cartElements[i].price;
 
-        updateTotal();              
-    }
-
-    updateTotal(); 
+            if (cartElements[i].qtCart === 0) {        
+                cartElements.splice(i, 1);
+                sellBtn.classList.add('disabled');
+            }            
+        
+        updateTotal();                   
+        }                                        
+    }; 
+ 
     disableButton();
 }
 
