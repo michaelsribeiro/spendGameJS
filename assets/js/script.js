@@ -158,6 +158,14 @@ function createAndUpdateReceipt() {
     }
 }
 
+// Print receipt Function
+function printReceipt(el){
+    let print = document.querySelector(el).innerHTML;
+    document.body.innerHTML = print;
+
+    window.print();
+}
+
 function updateTotal() {
     totalMoneyElement.innerHTML = `${jorgeFortune.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`;
 }
