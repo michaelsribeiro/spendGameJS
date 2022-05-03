@@ -1,5 +1,14 @@
-let moneyAmount = document.querySelector('.totalMoney');
+// Force page scroll position to top at page refresh.
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+} else {
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    }
+}
 
+// Money bar fixed top
+let moneyAmount = document.querySelector('.totalMoney');
 currStickyPos = moneyAmount.getBoundingClientRect().top + window.scrollY;
 window.onscroll = () => {
     if(window.scrollY > currStickyPos) {
@@ -13,7 +22,7 @@ window.onscroll = () => {
 let productKey = 0;
 let quant = 0;
 let jorgeFortune = 72000000000;
-let cartElements = new Array(0);
+let cartElements = [];
 
 // Elements
 const productContainer = document.querySelector('.product-container .row');
@@ -40,8 +49,7 @@ products.forEach((item, index) => {
         }
     });
 
-    productContainer.appendChild(productItem); 
-    
+    productContainer.appendChild(productItem);     
     disableButton();
 });
 
@@ -51,13 +59,9 @@ function buyItem(element, e) {
     // Get the product key
     let key = e.target.closest('.product-card').getAttribute('data-key');
     productKey = key;
-
+    
     let identifier = products[productKey].id + '-';
-    key = cartElements.findIndex((item) => item.identifier == identifier); 
-
-    if(key > -1 && jorgeFortune > cartElements[key].price) {
-        cartElements[key].qtCart ++;        
-    } 
+    key = cartElements.findIndex((item) => item.identifier == identifier);      
 
     if(cartElements[key] === undefined && jorgeFortune >= products[productKey].price){
         cartElements.push({
@@ -65,25 +69,24 @@ function buyItem(element, e) {
             id: products[productKey].id,
             qtCart: quant,
             price: products[productKey].price,
-        });      
+        });  
+        jorgeFortune -= products[productKey].price;     
     } 
-
-
     
     for (let i in cartElements) {
-
-        console.log(cartElements[i].id)
-
-        cartElements[i].price > jorgeFortune ? e.target.disabled = true : e.target.disabled = false;
-    
-        if (jorgeFortune - cartElements[i].price > 0 && jorgeFortune >= cartElements[i].price)
-            jorgeFortune -= cartElements[i].price;
+        
+        cartElements[i].price > jorgeFortune ? e.target.disabled = true : e.target.disabled = false;     
+        
+        // Aumenta a quantidade de itens do carrinho, caso haja um item no carrinho com o mesmo identificador.
+        if(key > -1 && jorgeFortune > cartElements[i].price && jorgeFortune - cartElements[i].price > 0) {
+            cartElements[i].qtCart += 1; 
+            jorgeFortune -= cartElements[i].price; 
+        }
 
         if(cartElements[i].qtCart > 0)
             element.querySelector('.product--qtd').value = cartElements[i].qtCart;
             element.querySelector('.product--remove').classList.remove('disabled'); 
-            updateTotal(); 
-    }
+    }  
 
     updateTotal(); 
     disableButton();    
@@ -94,7 +97,7 @@ function sellItem(element, e) {
     let qtd = element.querySelector('.product--qtd');
     let key = e.target.closest('.product-card').getAttribute('data-key');
 
-    for(let i in cartElements){       
+    for(let i in cartElements){           
 
         if (cartElements[i].id === products[key].id) {
             cartElements[i].qtCart -= 1;
@@ -104,10 +107,10 @@ function sellItem(element, e) {
             if (cartElements[i].qtCart === 0) {        
                 cartElements.splice(i, 1);
                 sellBtn.classList.add('disabled');
-            }            
-        
-        updateTotal();                   
-        }                                        
+            }
+            updateTotal(); 
+            return       
+        }                                             
     }; 
  
     disableButton();
