@@ -61,7 +61,12 @@ function buyItem(element, e) {
     productKey = key;
     
     let identifier = products[productKey].id + '-';
-    key = cartElements.findIndex((item) => item.identifier == identifier);      
+    key = cartElements.findIndex((item) => item.identifier == identifier);   
+    
+    if(key > -1 && jorgeFortune > cartElements[key].price && jorgeFortune - cartElements[key].price > 0) {
+        cartElements[key].qtCart += quant; 
+        jorgeFortune -= cartElements[key].price; 
+    }
 
     if(cartElements[key] === undefined && jorgeFortune >= products[productKey].price){
         cartElements.push({
@@ -75,13 +80,7 @@ function buyItem(element, e) {
     
     for (let i in cartElements) {
         
-        cartElements[i].price > jorgeFortune ? e.target.disabled = true : e.target.disabled = false;     
-        
-        // Aumenta a quantidade de itens do carrinho, caso haja um item no carrinho com o mesmo identificador.
-        if(key > -1 && jorgeFortune > cartElements[i].price && jorgeFortune - cartElements[i].price > 0) {
-            cartElements[i].qtCart += 1; 
-            jorgeFortune -= cartElements[i].price; 
-        }
+        cartElements[i].price > jorgeFortune ? e.target.disabled = true : e.target.disabled = false;       
 
         if(cartElements[i].qtCart > 0)
             element.querySelector('.product--qtd').value = cartElements[i].qtCart;
