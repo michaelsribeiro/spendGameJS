@@ -73,7 +73,7 @@ function buyItem(element, e) {
     let identifier = products[productKey].id + '-';
     key = cartElements.findIndex((item) => item.identifier == identifier);   
     
-    if(key > -1 && jorgeFortune > cartElements[key].price && jorgeFortune - cartElements[key].price > 0) {
+    if(key > -1 && jorgeFortune >= cartElements[key].price && jorgeFortune - cartElements[key].price > 0) {
         cartElements[key].qtCart += quant; 
         jorgeFortune -= cartElements[key].price; 
     }
