@@ -14,7 +14,7 @@
 <h2 align="center">Preview 🖥️</h2>
 
    <p align="center">
-      <img src="assets/images/image.gif" width="70%" alt="Quem quer ser um Bilionário?"/>
+      <img src="assets/images/image.gif" width="80%" alt="Quem quer ser um Bilionário?"/>
    </p>  
    
    <br>
