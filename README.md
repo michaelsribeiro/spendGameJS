@@ -1,4 +1,6 @@
-# Quem quer ser um Bilionário?
+<h1 align="center">
+   Quem quer ser um Bilionário?
+</h1>
 
 <h2 align="center">About 📖</h2>
    
