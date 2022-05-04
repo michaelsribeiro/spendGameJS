@@ -6,15 +6,15 @@
    
    <br>
    
-   <h1 align="center">Quem quer ser um Bilionário?</h1>
-   <p align="center">See the project in action [here](https://spend-billionaire-fortune.netlify.app/). 🧐
+<h1 align="center">Quem quer ser um Bilionário?</h1>
 
-   <br>
+See the project in action [here](https://spend-billionaire-fortune.netlify.app/)
+<br>
+<br>
+
 <h2 align=>About 📖</h2>
    
-   <p>
-      A fully responsive and fun web app that "allows" users to spend the entire fortune of the richest man in Brazil.<br>      
-   </p> 
+   <p> A fully responsive and fun web app that "allows" users to spend the entire fortune of the richest man in Brazil.</p> 
    
    <br>
    <br>
