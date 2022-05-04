@@ -1,4 +1,12 @@
-<h1 align="center">
+<h2 align="center">Preview 🖥️</h2>
+
+   <p align="center">
+      <img src="assets/images/image.gif" width="100%" alt="Quem quer ser um Bilionário?"/>
+   </p>  
+   
+   <br>
+   
+   <h1 align="center">
    Quem quer ser um Bilionário?
 </h1>
 
@@ -9,15 +17,6 @@
    <p align="center">
       A fully responsive and fun web app that "allows" users to spend the entire fortune of the richest man in Brazil.<br>      
    </p> 
-   
-   <br>
-   <br>
-   
-<h2 align="center">Preview 🖥️</h2>
-
-   <p align="center">
-      <img src="assets/images/image.gif" width="80%" alt="Quem quer ser um Bilionário?"/>
-   </p>  
    
    <br>
    <br>
