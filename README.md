@@ -14,7 +14,7 @@
 <h2 align="center">Preview 🖥️</h2>
 
    <p align="center">
-      <img src="assets/images/LAYOUT_DESKTOP-02.png" width="70%" alt="Subway Ecommerce Demo"/>
+      <img src="assets/images/LAYOUT_DESKTOP-02.png" width="70%" alt="Quem quer ser um Bilionário?"/>
    </p>  
    
    <br>
