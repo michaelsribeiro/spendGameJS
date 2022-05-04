@@ -2,6 +2,8 @@
    Quem quer ser um Bilionário?
 </h1>
 
+   <br>
+   <br>
 <h2 align="center">About 📖</h2>
    
    <p align="center">
