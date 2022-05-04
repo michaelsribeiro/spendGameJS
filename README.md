@@ -14,7 +14,7 @@
 <h2 align="center">Preview 🖥️</h2>
 
    <p align="center">
-      <img src="assets/images/LAYOUT_DESKTOP-02.png" width="70%" alt="Quem quer ser um Bilionário?"/>
+      <img src="assets/images/image.gif" width="70%" alt="Quem quer ser um Bilionário?"/>
    </p>  
    
    <br>
@@ -29,6 +29,7 @@
 - [HTML](https://html.com/)
 - [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 - [JavaScript](https://www.javascript.com/)
+- [Bootstrap](https://getbootstrap.com/)
 
 ---
 
