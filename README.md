@@ -15,11 +15,6 @@ See the project in action [here](https://spend-billionaire-fortune.netlify.app/)
 <h2 align=>About 📖</h2>
    
    <p> A fully responsive and fun web app that "allows" users to spend the entire fortune of the richest man in Brazil.</p> 
-   
-   <br>
-   <br>
-
----
 
 <h2>Technologies 🚀</h2>
 
@@ -27,8 +22,6 @@ See the project in action [here](https://spend-billionaire-fortune.netlify.app/)
 - [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 - [JavaScript](https://www.javascript.com/)
 - [Bootstrap](https://getbootstrap.com/)
-
----
 
 <h2>How to use 🤔</h2>
 
@@ -42,8 +35,6 @@ See the project in action [here](https://spend-billionaire-fortune.netlify.app/)
 - Open your browser in:
   http://localhost:5500/ 
 ```
-
----
 
 <h2>Licence 📝</h2>
 
