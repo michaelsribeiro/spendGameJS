@@ -6,26 +6,22 @@
    
    <br>
    
-   <h1 align="center">
-   Quem quer ser um Bilionário?
-</h1>
+   <h1 align="center">Quem quer ser um Bilionário?</h1>
+   <p align="center">See the project in action [here](https://spend-billionaire-fortune.netlify.app/). 🧐
 
    <br>
-   <br>
-<h2 align="center">About 📖</h2>
+<h2 align=>About 📖</h2>
    
-   <p align="center">
+   <p>
       A fully responsive and fun web app that "allows" users to spend the entire fortune of the richest man in Brazil.<br>      
    </p> 
    
    <br>
    <br>
-   
-   >  * See the project in action [`here`](https://spend-billionaire-fortune.netlify.app/). 🧐
 
 ---
 
-<h2 align="center">Technologies 🚀</h2>
+<h2>Technologies 🚀</h2>
 
 - [HTML](https://html.com/)
 - [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
@@ -34,7 +30,7 @@
 
 ---
 
-<h2 align="center">How to use 🤔</h2>
+<h2>How to use 🤔</h2>
 
 ```
 - Clone this repo:
@@ -49,8 +45,8 @@
 
 ---
 
-<h2 align="center">Licence 📝</h2>
+<h2>Licence 📝</h2>
 
-<p align="center">
+<p>
    This repo is under MIT Licence. You can see that <a href="https://github.com/michaelsribeiro/spendGameJS/blob/main/LICENSE.md"> LICENSE </a> for more details. 😉
 </p>
