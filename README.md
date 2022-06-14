@@ -1,3 +1,6 @@
+<br>
+<br>
+
 <p align="center">
    <img src="assets/images/image.gif" width="100%" alt="Spend Jorge Lemann's Fortune"/>
 </p> 
@@ -16,6 +19,7 @@
 <h3>Spend Jorge Lemann's Fortune</h3>
 
 A fully responsive and fun web app that "allows" users to spend the entire fortune of the richest man in Brazil.
+Project Inspired by [neal.fun](https://neal.fun)
 
 ## 🚀 Technologies 
 
@@ -26,18 +30,8 @@ A fully responsive and fun web app that "allows" users to spend the entire fortu
 
 ## ✨ Features
 
-- Register<br/>
-- Login<br/>
-- Required login for some restrict pages<br/>
-- Change password and change e-mail funcionalities<br/>
-- Recover password with PHP MAILER<br/>
-- Ranking system (Best Clans, Players with most kills, Boss Status, Castle Sieges)
-
-## 👨🏽‍💻 Features in development
-
-- Administrator Panel<br/>
-- User Panel<br/>
-- Donate system with real time delivery items
+- Cart System<br/>
+- JSON API consumption<br/>
 
 ## 🤔 How to use
 
